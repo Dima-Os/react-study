@@ -1,16 +1,25 @@
-const ColorPickerLable = ({ el }) => {
-  return <span style={{ backgroundColor: el.color }}>{el.label}</span>;
+import s from './ColorPicker.module.scss';
+
+const ColorPickerLable = () => {
+  return <span></span>;
 };
 
 const ColorPicker = ({ options }) => {
   return (
-    <ul>
-      {options.map(option => (
-        <li key={option.lable}>
-          <ColorPickerLable el={option} key={option.color} />
-        </li>
-      ))}
-    </ul>
+    <div className={s.container}>
+      <h2 className={s.heading}>Color Picker</h2>
+      <ul className={s.list}>
+        {options.map(option => (
+          <li
+            className={s.item}
+            key={option.label}
+            style={{ backgroundColor: option.color }}
+          >
+            <ColorPickerLable el={option} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
