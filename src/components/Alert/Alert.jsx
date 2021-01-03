@@ -3,7 +3,6 @@ import s from './Alert.module.css';
 import PropTypes from 'prop-types';
 
 const Alert = ({ text, type }) => {
-  console.log(s);
   return (
     <p role="alert" className={s[type]}>
       {text}
