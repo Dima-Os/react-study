@@ -13,10 +13,11 @@ class Dropdown extends Component {
   //     this.setState({visible:false})
   // }
   render() {
+    const { visible } = this.state;
     return (
       <div className={s.wrapper}>
         <button type="button" onClick={this.togleMenu}>
-          {this.state.visible ? 'Скрить' : 'Показать'}
+          {visible ? 'Скрить' : 'Показать'}
         </button>
         {/* <button type='button' onClick={this.hideMenu}  >
                     Скрыть
@@ -24,7 +25,7 @@ class Dropdown extends Component {
                 <button type='button' onClick={this.showMenu} >
                     Показать
                 </button> */}
-        {this.state.visible && <div className={s.menu}>Выпадашка</div>}
+        {visible && <div className={s.menu}>Выпадашка</div>}
       </div>
     );
   }

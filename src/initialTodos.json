@@ -1,0 +1,32 @@
+[
+  {
+    "id": "id-001",
+    "text": "Доделать дз по React",
+    "completed": false
+  },
+  {
+    "id": "id-002",
+    "text": "Выучить основы React",
+    "completed": true
+  },
+  {
+    "id": "id-003",
+    "text": "Выучить основы Vue",
+    "completed": true
+  },
+  {
+    "id": "id-004",
+    "text": "Доделать дз по React",
+    "completed": false
+  },
+  {
+    "id": "id-005",
+    "text": "Warthander сила",
+    "completed": false
+  },
+  {
+    "id": "id-006",
+    "text": "Спечь пирог",
+    "completed": false
+  }
+]

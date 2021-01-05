@@ -20,10 +20,11 @@ class Counter extends Component {
     this.setState(prev => ({ value: prev.value - 1 }));
   };
   render() {
+    const { value } = this.state;
     return (
       <div className={s.counter}>
         <h2 className={s.heading}>Counter</h2>
-        <Value value={this.state.value} />
+        <Value value={value} />
         <Controls
           onIncrement={this.onIncrement}
           onDecrement={this.onDecrement}
