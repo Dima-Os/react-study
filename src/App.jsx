@@ -4,41 +4,40 @@ import Container from './components/Container';
 // import Counter from './components/Counter';
 // import Dropdown from './components/Dropdown';
 // import ColorPicker from './components/ColorPicker';
-import Todos from './components/Todos';
+// import Todos from './components/Todos';
+import Form from './components/Form';
 
 // import colorPickerOptions from './colorPickerOptions.json'
-import initialTodos from './initialTodos.json';
+// import initialTodos from './initialTodos.json';
 
 class App extends Component {
   state = {
-    todos: initialTodos,
-    name: '',
-    tag: '',
+    // todos: initialTodos
   };
   onClick = id => {
-    console.log(id);
     this.setState(prevState => ({
       todos: prevState.todos.filter(todo => todo.id !== id),
     }));
   };
-  handleInputChange = e => {
-    const { name, value } = e.currentTarget;
-    this.setState({ [name]: value });
+  formSubmitHandler = ({ name, tag }) => {
+    this.setState({
+      name,
+      tag,
+    });
   };
   render() {
+    // const totalAmount = this.state.todos.length;
+
+    // const complitedAmount = this.state.todos.reduce((acc, el) => {
+    //   return el.completed ? acc + 1 : acc;
+    // }, 0);
+
     return (
       <Container>
-        <form>
-          <label>
-            Enter your name:
-            <input onChange={this.handleInputChange} name="name" type="text" />
-          </label>
-          <label>
-            Enter your tag:
-            <input onChange={this.handleInputChange} name="tag" type="text" />
-          </label>
-        </form>
-        <Todos todos={this.state.todos} onClick={this.onClick} />
+        {/* <p>Total amount: {totalAmount}</p> */}
+        {/* <p>Total amount: {complitedAmount}</p> */}
+        {/* <Todos todos={this.state.todos} onClick={this.onClick} /> */}
+        <Form formSubmitHandler={this.formSubmitHandler} />
         {/* <ColorPicker options={colorPickerOptions}/>
       <Dropdown />
       <Counter initialValue={0} /> */}
