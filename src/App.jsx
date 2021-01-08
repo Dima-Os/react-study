@@ -12,14 +12,21 @@ import initialTodos from './initialTodos.json';
 class App extends Component {
   state = { todos: initialTodos };
   onClick = id => {
-    console.log(id);
     this.setState(prevState => ({
       todos: prevState.todos.filter(todo => todo.id !== id),
     }));
   };
   render() {
+    const totalAmount = this.state.todos.length;
+
+    const complitedAmount = this.state.todos.reduce((acc, el) => {
+      return el.completed ? acc + 1 : acc;
+    }, 0);
+
     return (
       <Container>
+        <p>Total amount: {totalAmount}</p>
+        <p>Total amount: {complitedAmount}</p>
         <Todos todos={this.state.todos} onClick={this.onClick} />
         {/* <ColorPicker options={colorPickerOptions}/>
       <Dropdown />
