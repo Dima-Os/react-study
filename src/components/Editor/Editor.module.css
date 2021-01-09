@@ -1,0 +1,21 @@
+.form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 15px;
+  outline: 3px solid #232323;
+  margin-bottom: 10px;
+}
+.message {
+  display: block;
+  width: 380px;
+  height: 60px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  /* resize: none; */
+}
+.button {
+  display: block;
+  width: 200px;
+  height: 30px;
+  margin: 0 auto;
+}

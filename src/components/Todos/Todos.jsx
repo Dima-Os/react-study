@@ -7,7 +7,7 @@ const Todos = ({
   completedAmount,
 }) => {
   return (
-    <section className={s.section}>
+    <div className={s.section}>
       <h2 className={s.heading}>Your todos</h2>
       <p>Total amount: {totalAmount}</p>
       <p>Completed amount: {completedAmount}</p>
@@ -26,12 +26,12 @@ const Todos = ({
                   onInputChange(id);
                 }}
               />
-              Виполнено
+              Выполнено
             </label>
           </li>
         ))}
       </ul>
-    </section>
+    </div>
   );
 };
 export default Todos;

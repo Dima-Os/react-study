@@ -1,3 +1,7 @@
+html {
+  box-sizing: border-box;
+}
+
 .big {
   width: 300px;
   height: 300px;
