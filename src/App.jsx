@@ -1,46 +1,41 @@
 import { Component } from 'react';
 
 import Container from './components/Container';
-// import Counter from './components/Counter';
-// import Dropdown from './components/Dropdown';
-// import ColorPicker from './components/ColorPicker';
-// import Todos from './components/Todos';
-import Form from './components/Form';
-
-// import colorPickerOptions from './colorPickerOptions.json'
-// import initialTodos from './initialTodos.json';
+import Todos from './components/Todos';
+import initialTodos from './initialTodos.json';
 
 class App extends Component {
   state = {
-    // todos: initialTodos
+    todos: initialTodos,
   };
   onClick = id => {
     this.setState(prevState => ({
       todos: prevState.todos.filter(todo => todo.id !== id),
     }));
   };
-  formSubmitHandler = ({ name, tag }) => {
-    this.setState({
-      name,
-      tag,
-    });
+  onInputChange = id => {
+    this.setState(prevState => ({
+      todos: prevState.todos.map(todo => {
+        return todo.id === id ? { ...todo, completed: !todo.completed } : todo;
+      }),
+    }));
   };
   render() {
-    // const totalAmount = this.state.todos.length;
+    const totalAmount = this.state.todos.length;
 
-    // const complitedAmount = this.state.todos.reduce((acc, el) => {
-    //   return el.completed ? acc + 1 : acc;
-    // }, 0);
+    const completedAmount = this.state.todos.reduce((acc, el) => {
+      return el.completed ? acc + 1 : acc;
+    }, 0);
 
     return (
       <Container>
-        {/* <p>Total amount: {totalAmount}</p> */}
-        {/* <p>Total amount: {complitedAmount}</p> */}
-        {/* <Todos todos={this.state.todos} onClick={this.onClick} /> */}
-        <Form formSubmitHandler={this.formSubmitHandler} />
-        {/* <ColorPicker options={colorPickerOptions}/>
-      <Dropdown />
-      <Counter initialValue={0} /> */}
+        <Todos
+          todos={this.state.todos}
+          onClick={this.onClick}
+          onInputChange={this.onInputChange}
+          totalAmount={totalAmount}
+          completedAmount={completedAmount}
+        />
       </Container>
     );
   }
