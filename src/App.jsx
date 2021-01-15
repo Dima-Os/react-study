@@ -7,7 +7,7 @@ import Todos from './components/Todos';
 import Editor from './components/Editor';
 import Filter from './components/Filter';
 import Modal from './components/Modal';
-
+import Clock from './components/Clock';
 class App extends Component {
   state = {
     todos: [],
@@ -71,6 +71,7 @@ class App extends Component {
     return (
       <>
         <Container>
+          {this.state.showModal && <Clock />}
           <Editor onFormSubmit={this.onFormSubmit} />
           <Filter
             value={this.state.filterValue}
@@ -86,7 +87,17 @@ class App extends Component {
           <button type="button" onClick={this.togleModal}>
             Open modal
           </button>
-          {this.state.showModal && <Modal />}
+          {this.state.showModal && (
+            <Modal togleModal={this.togleModal}>
+              <h1>Heading</h1>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+                vero ipsum nisi necessitatibus voluptatem, nemo officia officiis
+                provident libero pariatur cumque. Odio placeat autem aliquid,
+                maiores quibusdam ipsum! Eaque, itaque?
+              </p>
+            </Modal>
+          )}
         </Container>
       </>
     );
