@@ -7,7 +7,10 @@ import Todos from './components/Todos';
 import Editor from './components/Editor';
 import Filter from './components/Filter';
 import Modal from './components/Modal';
-import Clock from './components/Clock';
+// import Clock from './components/Clock';
+import IconBtn from './components/IconBtn';
+import { ReactComponent as AddIcon } from './images/plus.svg';
+
 class App extends Component {
   state = {
     todos: [],
@@ -21,9 +24,15 @@ class App extends Component {
       this.setState({ todos: localTodos });
     }
   }
-  componentDidUpdate(prevState) {
+  componentDidUpdate(prevProps, prevState) {
     if (prevState.todos !== this.state.todos) {
       localStorage.setItem('userTodos', JSON.stringify(this.state.todos));
+    }
+    if (
+      this.state.todos.length > prevState.todos.length &&
+      prevState.todos.length !== 0
+    ) {
+      this.togleModal();
     }
   }
 
@@ -48,6 +57,7 @@ class App extends Component {
       completed: false,
     };
     this.setState(prevState => ({ todos: [todo, ...prevState.todos] }));
+    // this.togleModal();
   };
 
   onChangeFilter = e => {
@@ -71,8 +81,9 @@ class App extends Component {
     return (
       <>
         <Container>
-          {this.state.showModal && <Clock />}
-          <Editor onFormSubmit={this.onFormSubmit} />
+          <IconBtn onClick={this.togleModal} aria-label="Добавить">
+            <AddIcon width="40" height="40" />
+          </IconBtn>
           <Filter
             value={this.state.filterValue}
             onChangeHandler={this.onChangeFilter}
@@ -84,18 +95,9 @@ class App extends Component {
             totalAmount={totalAmount}
             completedAmount={completedAmount}
           />
-          <button type="button" onClick={this.togleModal}>
-            Open modal
-          </button>
           {this.state.showModal && (
             <Modal togleModal={this.togleModal}>
-              <h1>Heading</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-                vero ipsum nisi necessitatibus voluptatem, nemo officia officiis
-                provident libero pariatur cumque. Odio placeat autem aliquid,
-                maiores quibusdam ipsum! Eaque, itaque?
-              </p>
+              <Editor onFormSubmit={this.onFormSubmit} />
             </Modal>
           )}
         </Container>

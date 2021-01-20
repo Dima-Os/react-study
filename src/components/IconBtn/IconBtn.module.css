@@ -1,0 +1,13 @@
+.iconBtn {
+  margin: 0 auto;
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font: inherit;
+  /* background-color: rgb(17, 243, 55); */
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
