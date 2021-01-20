@@ -1,4 +1,4 @@
-import s from './Filter';
+import s from './Filter.module.css';
 const Filter = ({ value, onChangeHandler }) => {
   return (
     <label className={s.filter}>

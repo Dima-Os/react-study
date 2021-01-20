@@ -1,4 +1,5 @@
 import s from './Todos.module.css';
+import Todo from '../Todo';
 const Todos = ({
   todos,
   onClick,
@@ -14,20 +15,13 @@ const Todos = ({
       <ul className={s.list}>
         {todos.map(({ id, text, completed }) => (
           <li key={id} className={s.item}>
-            <p className={s.text}>{text}</p>
-            <button type="button" onClick={() => onClick(id)}>
-              Delete
-            </button>
-            <label>
-              <input
-                type="checkbox"
-                checked={completed}
-                onChange={() => {
-                  onInputChange(id);
-                }}
-              />
-              Выполнено
-            </label>
+            <Todo
+              text={text}
+              onClick={onClick}
+              id={id}
+              completed={completed}
+              onInputChange={onInputChange}
+            />
           </li>
         ))}
       </ul>
