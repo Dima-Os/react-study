@@ -1,0 +1,28 @@
+.form {
+  display: flex;
+  justify-content: space-around;
+}
+.wrapper {
+  text-align: center;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+}
+.input {
+  margin-left: 10px;
+}
+.label {
+  margin-right: 10px;
+}
+.submit {
+  margin: 0;
+  text-decoration: none;
+  font-family: sans-serif;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
