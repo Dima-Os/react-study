@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify';
 
 import Container from './components/Container';
 import InputForm from './components/InputForm';
+import PockemonCard from './components/PockemonCard';
 
 class App extends Component {
   state = {
@@ -16,6 +17,7 @@ class App extends Component {
     return (
       <Container>
         <InputForm onFormSubmit={this.onFormSubmit} />
+        <PockemonCard pockemonName={this.state.pockemonName} />
         <ToastContainer />
       </Container>
     );
