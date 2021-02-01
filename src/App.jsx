@@ -1,15 +1,14 @@
 import { Component } from 'react';
 
-import shortid from 'shortid';
-
 import Container from './components/Container';
 import Todos from './components/Todos';
 import Editor from './components/Editor';
 import Filter from './components/Filter';
 import Modal from './components/Modal';
-// import Clock from './components/Clock';
 import IconBtn from './components/IconBtn';
 import { ReactComponent as AddIcon } from './images/plus.svg';
+
+import todosAPI from './services/todosAPI';
 
 class App extends Component {
   state = {
@@ -19,45 +18,46 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const localTodos = JSON.parse(localStorage.getItem('userTodos'));
-    if (localTodos) {
-      this.setState({ todos: localTodos });
-    }
+    todosAPI.getTodos().then(({ data }) => {
+      this.setState({ todos: data });
+    });
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.todos !== this.state.todos) {
       localStorage.setItem('userTodos', JSON.stringify(this.state.todos));
     }
-    if (
-      this.state.todos.length > prevState.todos.length &&
-      prevState.todos.length !== 0
-    ) {
-      this.togleModal();
-    }
   }
-
   onClick = id => {
-    this.setState(prevState => ({
-      todos: prevState.todos.filter(todo => todo.id !== id),
-    }));
+    todosAPI.deleteTodo(id).then(
+      this.setState(prevState => ({
+        todos: prevState.todos.filter(todo => todo.id !== id),
+      })),
+    );
   };
 
-  onInputChange = id => {
-    this.setState(prevState => ({
-      todos: prevState.todos.map(todo => {
-        return todo.id === id ? { ...todo, completed: !todo.completed } : todo;
-      }),
-    }));
+  onInputChange = todoId => {
+    const todo = this.state.todos.find(({ id }) => id === todoId);
+    const { completed } = todo;
+    todosAPI.makeCompleted(todoId, completed).then(({ data }) => {
+      this.setState(prevState => ({
+        todos: prevState.todos.map(todo => {
+          return todo.id === data.id ? data : todo;
+        }),
+      }));
+    });
   };
 
   onFormSubmit = message => {
     const todo = {
-      id: shortid.generate(),
       text: message,
       completed: false,
     };
-    this.setState(prevState => ({ todos: [todo, ...prevState.todos] }));
-    // this.togleModal();
+    todosAPI
+      .addTodo(todo)
+      .then(({ data }) => {
+        this.setState(prevState => ({ todos: [data, ...prevState.todos] }));
+      })
+      .then(this.togleModal());
   };
 
   onChangeFilter = e => {

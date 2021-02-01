@@ -1,41 +1,19 @@
 {
   "todos": [
     {
-      "id": "id-001",
-      "text": "Доделать дз по React",
-      "completed": false
+      "text": "рпав",
+      "completed": false,
+      "id": "MLhrKRG"
     },
     {
-      "id": "id-002",
-      "text": "Выучить основы React",
-      "completed": true
+      "text": "бьостр",
+      "completed": true,
+      "id": "unh6kAM"
     },
     {
-      "id": "id-003",
-      "text": "Выучить основы Vue",
-      "completed": true
-    },
-    {
-      "id": "id-004",
-      "text": "Доделать дз по React",
-      "completed": false
-    },
-    {
-      "id": "id-005",
-      "text": "Warthunder сила",
-      "completed": false
-    },
-    {
-      "id": "id-006",
-      "text": "Спечь пирог",
-      "completed": false
-    },
-    {
-      "todo": {
-        "text": ",gmfncbxvz",
-        "completed": false
-      },
-      "id": "XNMBD67"
+      "text": "юлбоьр тсп",
+      "completed": true,
+      "id": "5bIz_It"
     }
   ]
 }
