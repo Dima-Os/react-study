@@ -1,10 +1,9 @@
 import Article from './Article';
 import s from './NewsView.module.css';
 
-const NewstView = ({ articles, query }) => {
+const NewstView = ({ articles }) => {
   return (
     <>
-      <h1 className={s.heading}>Статті по запиту: {query}</h1>
       <ul className={s.articlesList}>
         {articles.map(({ title, url, urlToImage }) => (
           <Article
