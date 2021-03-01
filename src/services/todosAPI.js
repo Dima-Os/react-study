@@ -15,4 +15,5 @@ const makeCompleted = (id, completed) => {
   return axios.patch(`/todos/${id}`, { completed: !completed });
 };
 
-export default { getTodos, addTodo, deleteTodo, makeCompleted };
+const todosAPI = { getTodos, addTodo, deleteTodo, makeCompleted };
+export default todosAPI;

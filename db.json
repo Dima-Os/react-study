@@ -1,19 +1,19 @@
 {
   "todos": [
     {
-      "text": "рпав",
+      "text": "Complete react.\n",
+      "completed": true,
+      "id": 1
+    },
+    {
+      "text": "Recover js",
+      "completed": true,
+      "id": 2
+    },
+    {
+      "text": "tank",
       "completed": false,
-      "id": "MLhrKRG"
-    },
-    {
-      "text": "бьостр",
-      "completed": true,
-      "id": "unh6kAM"
-    },
-    {
-      "text": "юлбоьр тсп",
-      "completed": true,
-      "id": "5bIz_It"
+      "id": 3
     }
   ]
 }
